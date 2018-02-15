@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filter with jQuery</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+  <input id="input">
+
+  <ul id="list">
+    <li>Text</li>
+    <li>Number</li>
+    <li>Place</li>
+  </ul>
+  
+  <script>
+    $(document).ready(function() {
+
+        $("#input").on("keyup", function() {
+            var input = $("#input").val().toLowerCase()
+            $("li").each(function(index, item, value) {
+              var list = item.innerHTML.toLowerCase()
+                console.log(list)
+              if(list.includes(input)) {
+                  $(item).show()
+              } else {
+                  $(item).hide()
+              }
+            })   
+        })
+
+        // $("#input").on("keyup", function() {
+        //     var input = $("#input").val().toLowerCase()
+        //     $("#list li").filter(function() {
+        //         $(this).toggle($(this).text().toLowerCase().indexOf(input > -1))
+        //     })
+        // })
+
+    })
+  </script>
+</body>
+</html>

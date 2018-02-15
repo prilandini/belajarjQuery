@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Get Data with jQuery</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <button>Show Data</button>
+    <div id="content">
+        <!--Data dari json-placeholder-->
+    </div>
+  </div>
+
+  <script>
+      
+    $(document).ready(function() {
+        $("button").click(function(){
+            var url = "https://jsonplaceholder.typicode.com/posts?userId=2"
+
+            $.get(url, function(response) {
+                var title = []
+                var body = []
+
+                $.each(response, function(key, value) {
+                    // console.log(value.title)
+                    // $("div").append("<h1>" + value.title+ "</h1>" + "<br>" + "<p>" + value.title + "</p>" + "<hr>")
+                    var title = value.title
+                    var body = value.body
+
+                    $("#content").append("<h1>" + title + "</h1>")
+                    $("#content").append("<p>" + body + "</p>")
+
+                })
+            })       
+        })
+
+    })
+
+    </script>
+</body>
+</html>
